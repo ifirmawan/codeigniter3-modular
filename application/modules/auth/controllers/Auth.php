@@ -29,18 +29,25 @@ class Auth extends CI_Controller
 				'name' => 'username',
 				'type' => 'text',
 				'placeholder' => 'Username',
+				'class' => 'form-control'
 			],
 			'password' => [
 				'name' => 'password',
 				'type' => 'password',
-				'placeholder' => 'Password'
+				'placeholder' => 'Password',
+				'class' => 'form-control'
 			],
 			'submit' => [
 				'name' => 'submit',
-				'value' => 'Submit'
+				'value' => 'Submit',
+				'class' => 'btn btn-primary btn-block'
 			]
 		];
-		$this->load->view('pages/login', $data);
+		$header['title'] = 'Login - WANOTIF';
+		$this->load->view('themes/bootstrap/login/header', $header);
+		$this->load->view('auth/index',$data);
+		$this->load->view('themes/bootstrap/footer');
+		//$this->load->view('themes/bootstrap/footer');
 	}
 
 	public function login()
