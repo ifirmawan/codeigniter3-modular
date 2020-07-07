@@ -2,7 +2,7 @@
 /**
  *
  */
-class Dashboard extends CI_Controller
+class Packages extends CI_Controller
 {
 
 	function __construct()
@@ -16,12 +16,6 @@ class Dashboard extends CI_Controller
 
 	public function index()
 	{
-		echo "oke";
-	}
-
-	public function logout()
-	{
-		$this->session->sess_destroy();
-		redirect('auth', 'location');
+		echo "WhatsappPackages";
 	}
 }

@@ -11,7 +11,7 @@ class Auth extends CI_Controller
 		parent::__construct();
 
 		if ($this->session->userdata('logged_in') === 1) {
-			redirect('auth/dashboard');
+			redirect('dashboard');
 		}
 
 		$this->load->model('basic');
@@ -29,31 +29,32 @@ class Auth extends CI_Controller
 				'name' => 'username',
 				'type' => 'text',
 				'placeholder' => 'Username',
-				'class' => 'form-control'
+				'class' => 'form-control',
+				'autocomplete' => 'username'
 			],
 			'password' => [
 				'name' => 'password',
 				'type' => 'password',
 				'placeholder' => 'Password',
-				'class' => 'form-control'
+				'class' => 'form-control',
+				'autocomplete' => 'current-password'
 			],
 			'submit' => [
 				'name' => 'submit',
-				'value' => 'Submit',
-				'class' => 'btn btn-primary btn-block'
+				'value' => 'Login',
+				'class' => 'btn btn-block login-btn mb-4'
 			]
 		];
 		$header['title'] = 'Login - WANOTIF';
 		$this->load->view('themes/bootstrap/login/header', $header);
 		$this->load->view('auth/index',$data);
-		$this->load->view('themes/bootstrap/footer');
-		//$this->load->view('themes/bootstrap/footer');
+		$this->load->view('themes/bootstrap/login/footer');
 	}
 
 	public function login()
 	{
 		if ($this->session->userdata('logged_in')==1) {
-			redirect('auth/dashboard', 'location');
+			redirect('dashboard', 'location');
 		}
 
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
@@ -100,7 +101,7 @@ class Auth extends CI_Controller
 					$real_name .= ' '.$info[0]['last_name'];
 					$this->session->set_userdata('user_real_name', $real_name);
 
-					redirect('auth/dashboard', 'location');
+					redirect('dashboard', 'location');
 				}
 			}
 		}
