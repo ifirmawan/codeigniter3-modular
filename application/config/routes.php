@@ -56,4 +56,4 @@ $route['translate_uri_dashes'] = FALSE;
 /**
 *custom ROUTES
 */
-$route['whatsapp-packages'] = 'whatsapp-packages/packages/index';
+$route['whatsapp-packages'] = 'whatsapp-packages/index';
